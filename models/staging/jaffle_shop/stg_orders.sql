@@ -6,7 +6,10 @@ with orders as (
         order_date,
         status
 
-    from raw.jaffle_shop.orders
+
+    from {{ source('jaffle_shop', 'orders') }}
+
+    {{ limit_data_in_dev('_ETL_LOADED_AT') }}
 
 )
 
